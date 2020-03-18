@@ -1,6 +1,7 @@
 var express = require('express'),
     path = require('path'),
     favicon = require('serve-favicon'),
+    jade = require('jade'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     mongoose = require('mongoose'),
@@ -13,7 +14,9 @@ var express = require('express'),
 var app = express();
 
 
-
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 var enableCORS = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -34,15 +37,14 @@ app.disable('x-powered-by');
 helmet(app);
 
 //setup mongoose
-//app.db = mongoose.createConnection('mongodb://127.0.0.1:27017/AudioCloud',{useMongoClient: true});
-//app.db = mongoose.createConnection('mongodb://root:root@ds129023.mlab.com:29023/audiocloud',{useMongoClient: true},{authMechanism: 'ScramSHA1'});
-// app.db.on('error', console.error.bind(console, 'mongoose connection error: '));
-// app.db.once('open', function () {
-//   //and... we have a data store
-//   console.log('DB connection successful');
-//});
+app.db = mongoose.createConnection('mongodb+srv://dhavaldedhia:dhavaldedhia@cluster0-zrpal.mongodb.net/tams?retryWrites=true&w=majority',{useMongoClient: true});
+app.db.on('error', console.error.bind(console, 'mongoose connection error: '));
+app.db.once('open', () => {
+  //and... we have a data store
+  console.log('DB connection successful');
+});
 
-//require('./models')(app, mongoose);
+require('./models')(app, mongoose);
 
 
 require('./routes')(app);

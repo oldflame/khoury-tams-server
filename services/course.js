@@ -1,12 +1,27 @@
 var course = {
+  getAllCourses: (req, res) => {
+    req.app.db.models.Course.find({}, (err, courses) => {
+      if (err) {
+        console.log("Error", err);
+        return res.json([]);
+      }
+      console.log("Courses", courses);
+      return res.status(200).json(courses);
+    });
+  },
 
-    getAllCourses: (req,res) => {
-        return res.json({"message": "hello"})
-    },
+  getCoursesForStream: (req, res) => {
+    const streamValue = req.params.stream;
+    console.log("Fetching courses for: ", streamValue);
+    req.app.db.models.Course.find({ stream: streamValue}, (err, courses) => {
+      if (err) {
+        console.log("Error", err);
+        return res.json([]);
+      }
+      console.log("Courses", courses);
+      return res.status(200).json(courses);
+    });
+  }
+};
 
-    getCoursesForStream: (req,res) => {
-        return res.json()
-    }
-}
-
-module.exports = course
+module.exports = course;
