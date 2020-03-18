@@ -20,7 +20,7 @@ var course = {
       }
       console.log("Courses", courses);
       return res.status(200).json(courses);
-    }).select("_id Course CRN Title Instructors");
+    }).select("_id Course CRN Title Instructors stream");
   }
 };
 
