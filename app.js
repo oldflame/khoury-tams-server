@@ -50,10 +50,10 @@ require('./models')(app, mongoose);
 require('./routes')(app);
 
 //setup utilities
-// app.utility = {};
+app.utility = {};
 // app.utility.sendmail = require('./util/sendmail');
 // app.utility.slugify = require('./util/slugify');
-// app.utility.workflow = require('./util/workflow');
+app.utility.workflow = require('./util/workflow');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
