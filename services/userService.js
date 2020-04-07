@@ -7,8 +7,13 @@ var userService = {
     req.app.db.models.User.findOne({email:req.body.email}, (err, user) => {
       if (err) {
         console.log("Error", err);
-        return res.status(401).json;
+        return res.status(401).json();
       }
+      if(!user){
+        console.log("No user found!!");
+        return res.status(401).json();
+      }
+      console.log("USer", user);
       bcrypt.compare(req.body.password, user.password, function (err, result) {
         if (err) {
           console.log("In bcrtpt error",err);
