@@ -1,5 +1,6 @@
 var course = require("./services/course");
 var userService = require("./services/userService");
+var applicationService = require("./services/applicationService")
 
 exports = module.exports = (app) => {
     app.options("/*", (req, res) => {
@@ -11,4 +12,5 @@ exports = module.exports = (app) => {
     app.post("/login", userService.login);
     app.post("/register", userService.register);
     app.get("/users", userService.getAllUsers);
+    app.get("/applications", applicationService.getAllApplications);
 };
