@@ -9,7 +9,6 @@ var application = {
             return res.status(200).json(applications);
         });
     }
-
 };
 
 module.exports = application;
