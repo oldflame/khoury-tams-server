@@ -37,7 +37,7 @@ app.disable('x-powered-by');
 helmet(app);
 
 //setup mongoose
-app.db = mongoose.createConnection('mongodb+srv://dhavaldedhia:dhavaldedhia@cluster0-zrpal.mongodb.net/tams?retryWrites=true&w=majority',{useMongoClient: true});
+app.db = mongoose.createConnection('mongodb+srv://dhavaldedhia:dhavaldedhia@cluster0-zrpal.mongodb.net/tams?retryWrites=true&w=majority');
 app.db.on('error', console.error.bind(console, 'mongoose connection error: '));
 app.db.once('open', () => {
   //and... we have a data store
@@ -50,10 +50,10 @@ require('./models')(app, mongoose);
 require('./routes')(app);
 
 //setup utilities
-// app.utility = {};
+app.utility = {};
 // app.utility.sendmail = require('./util/sendmail');
 // app.utility.slugify = require('./util/slugify');
-// app.utility.workflow = require('./util/workflow');
+app.utility.workflow = require('./util/workflow');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

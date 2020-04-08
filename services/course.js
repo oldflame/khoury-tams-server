@@ -34,7 +34,6 @@ var course = {
 
   getCoursesForStream: (req, res) => {
     const streamValue = req.params.stream;
-    console.log("Fetching courses for: ", streamValue);
     req.app.db.models.Course.find({ stream: streamValue }, (err, courses) => {
       if (err) {
         console.log("Error", err);
