@@ -1,5 +1,6 @@
 var course = require("./services/course");
 var userService = require("./services/userService");
+var taService = require("./services/fill-hours");
 
 exports = module.exports = (app) => {
   app.options("/*", (req, res) => {
@@ -10,4 +11,5 @@ exports = module.exports = (app) => {
   app.get("/courses/details/:crn", course.getMoreCourseDetails);
   app.post("/login", userService.login);
   app.post("/register", userService.register);
+  app.post("/submitHours", taService.submitTaHours)
 };
