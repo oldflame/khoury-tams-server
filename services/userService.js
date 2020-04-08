@@ -67,7 +67,6 @@ var userService = {
         phoneNumber: req.body.phoneNumber,
         role: req.body.role,
       };
-      console.log("Hashing", req.body);
       bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
         if (err) {
           console.log("Password hashing failed", err);
