@@ -23,9 +23,11 @@ exports = module.exports = function (app, mongoose) {
                 type: String,
                 required: true,
             },
+            currentGpa: {
+                type: String
+            },
             gpaInSubject: {
-                type: String,
-                required: true,
+                type: String
             },
             lookingForCoop: {
                 type: String,
