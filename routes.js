@@ -12,4 +12,5 @@ exports = module.exports = (app) => {
   app.post("/login", userService.login);
   app.post("/register", userService.register);
   app.post("/submitHours", taService.submitTaHours)
+  app.get("/getHours/:taId",taService.getAllSubmittedTaHours)
 };
