@@ -46,6 +46,17 @@ var userService = {
     });
   },
 
+  getAllUsers: (req, res) => {
+    req.app.db.models.User.find({}, (err, users) => {
+      if (err) {
+        console.log("Error", err);
+        return res.json([]);
+      }
+      console.log("Users", users);
+      return res.status(200).json(users);
+    });
+  },
+
   register: (req, res) => {
     var workflow = req.app.utility.workflow(req, res);
     workflow.on("createUserObject", function () {
