@@ -45,7 +45,7 @@ var course = {
   },
 
   getCourseById:(req, res) => {
-    const id = req.params._id;
+    const id = req.params.id;
     console.log("Fetching courses for: ", id);
     req.app.db.models.Course.find({_id: id}, (err, course) => {
       if (err) {
@@ -72,6 +72,7 @@ var course = {
 
   updateCourse: (req, res) => {
     req.app.db.models.Courses.update(req.body, (err, course) => {
+      console.log("Wokring for course:" , course);
       if (err) {
         console.log(err);
         return res.status(400);
