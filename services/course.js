@@ -56,7 +56,7 @@ var course = {
       return res.status(200).json(course);
     });
   },
-  
+
 
   getMoreCourseDetails: (req, res) => {
     const crn = req.params.crn;
@@ -72,7 +72,7 @@ var course = {
   },
 
   updateCourse: (req, res) => {
-    req.app.db.models.Courses.update(req.body, (err, course) => {
+    req.app.db.models.Course.update({_id:req.body.course._id}, req.body.course, (err, course) => {
       console.log("Wokring for course:" , course);
       if (err) {
         console.log(err);
