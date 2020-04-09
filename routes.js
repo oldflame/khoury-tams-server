@@ -8,6 +8,11 @@ exports = module.exports = (app) => {
   });
   app.get("/courses/:stream", course.getCoursesForStream);
   app.get("/courses", course.getAllCourses);
+  app.get("/courses/details/:crn",course.getMoreCourseDetails);
+  app.get("/instructors", course.getAllInstructors);
+  app.get("/courseNames", course.getAllCourseNames);
+  app.put("/updateCourse", course.updateCourse);
+  app.get("/course/:id", course.getCourseById);
   app.get("/courses/details/:crn", course.getMoreCourseDetails);
   app.post("/login", userService.login);
   app.post("/register", userService.register);
