@@ -1,5 +1,6 @@
 var course = require("./services/course");
 var userService = require("./services/userService");
+var applicationService = require("./services/applicationService")
 var taService = require("./services/fill-hours");
 
 exports = module.exports = (app) => {
@@ -18,4 +19,8 @@ exports = module.exports = (app) => {
   app.post("/register", userService.register);
   app.post("/submitHours", taService.submitTaHours)
   app.get("/getHours/:taId",taService.getAllSubmittedTaHours)
+  app.get("/users", userService.getAllUsers);
+  app.get("/applications", applicationService.getAllApplications);
+  app.post("/submitApplication", applicationService.submitApplication);
+  app.get("/getSubmittedApplication/:studentId",applicationService.getApplicationOfStudent)
 };
