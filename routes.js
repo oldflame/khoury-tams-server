@@ -7,6 +7,7 @@ exports = module.exports = (app) => {
   app.options("/*", (req, res) => {
     return res.status(200).json();
   });
+  app.post("/addCourse",course.addCourse)
   app.get("/courses/:stream", course.getCoursesForStream);
   app.get("/courses", course.getAllCourses);
   app.get("/courses/details/:crn",course.getMoreCourseDetails);
