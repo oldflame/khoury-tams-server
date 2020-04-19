@@ -3,7 +3,6 @@ const saltRounds = 10;
 var bcrypt = require("bcrypt");
 var _ = require("lodash");
 var jwt = require("jsonwebtoken")
-var mongoose = require('mongoose')
 
 var getAuthToken = (user) => {
     return jwt.sign(user, config.secret);
@@ -90,21 +89,33 @@ var userService = {
         workflow.emit("createUserObject");
     },
     updateUserById: (req, res) => {
-        req.app.db.models.User.update({_id: req.params['profileId']},
-                                      {
-                                          $set: {
-                                              firstName: req.body.firstName,
-                                              lastName: req.body.lastName,
-                                              phoneNumber: req.body.phoneNumber
-                                          }
-                                      }, (err, user) => {
-                console.log("User", user);
-                if (err) {
-                    console.log(err);
-                    return res.status(400);
-                }
-                return res.status(200).json(user);
-            });
+        req.app.db.models.User
+            .update({_id: req.params['profileId']},
+                    {
+                        $set: {
+                            firstName: req.body.firstName,
+                            lastName: req.body.lastName,
+                            phoneNumber: req.body.phoneNumber
+                        }
+                    }, (err, user) => {
+                    console.log("User", user);
+                    if (err) {
+                        console.log(err);
+                        return res.status(400);
+                    }
+                });
+        return req.app.db.models.User
+            .find({_id: req.params['profileId']})
+    },
+    getUserById: (req, res) => {
+        req.app.db.models.User.find({_id: req.params['userId']}, (err, user) => {
+            if (err) {
+                console.log("Error", err);
+                return res.json([]);
+            }
+            console.log("Users", user);
+            return res.send(user);
+        });
     }
 };
 module.exports = userService;
