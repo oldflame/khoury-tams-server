@@ -87,5 +87,15 @@ var userService = {
     });
     workflow.emit("createUserObject");
   },
+  updateUserById: (req, res) => {
+    req.app.db.models.User.update({_id:req.params['profileId']}, req.body.user, (err, user) => {
+      console.log("User" , user);
+      if (err) {
+        console.log(err);
+        return res.status(400);
+      }
+      return res.status(200).json(user);
+    });
+  }
 };
 module.exports = userService;
