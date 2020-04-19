@@ -7,6 +7,14 @@ exports = module.exports = function (app, mongoose) {
                                                    required: true,
                                                    trim: true
                                                },
+                                               firstName: {
+                                                   type: String,
+                                                   required: true
+                                               },
+                                               lastName: {
+                                                   type: String,
+                                                   required: true
+                                               },
                                                userId: {
                                                    type: String,
                                                    required: true,
