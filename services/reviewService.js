@@ -11,8 +11,8 @@ var reviewService = {
     },
 
     getReviewsForCourse: (req, res) => {
-        const courseId = req.params['courseId'];
-        req.app.db.models.Review.find({_id: courseId}, (err, review) => {
+        const id = req.params['courseId'];
+        req.app.db.models.Review.find({courseId: id}, (err, review) => {
             if (err) {
                 console.log("Error", err);
                 return res.json([]);
