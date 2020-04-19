@@ -25,7 +25,7 @@ exports = module.exports = function (app, mongoose) {
                                                    type: Boolean
                                                },
                                                semesterTaken: {
-                                                   type: Number
+                                                   type: String
                                                },
                                                yearTaken: {
                                                    type: String
