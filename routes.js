@@ -18,7 +18,6 @@ exports = module.exports = (app) => {
   app.get("/courseNames", course.getAllCourseNames);
   app.put("/updateCourse", course.updateCourse);
   app.get("/course/:id", course.getCourseById);
-  app.get("/courses/details/:crn", course.getMoreCourseDetails);
   app.post("/login", userService.login);
   app.post("/register", userService.register);
   app.post("/submitHours", taService.submitTaHours);

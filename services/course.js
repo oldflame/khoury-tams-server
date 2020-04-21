@@ -71,7 +71,7 @@ var course = {
   getMoreCourseDetails: (req, res) => {
     const crn = req.params.crn;
     console.log("Details for: ", crn);
-    req.app.db.models.Course.find({ CRN: crn }, (err, courses) => {
+    req.app.db.models.Course.findOne({ CRN: crn }, (err, courses) => {
       if (err) {
         console.log("Error", err);
         return res.json([]);

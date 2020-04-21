@@ -87,7 +87,7 @@ var userService = {
             .find({_id: req.params['profileId']})
     },
     getUserById: (req, res) => {
-        req.app.db.models.User.find({_id: req.params['userId']}, (err, user) => {
+        req.app.db.models.User.findOne({_id: req.params['userId']}, (err, user) => {
             if (err) {
                 console.log("Error", err);
                 return res.json([]);
