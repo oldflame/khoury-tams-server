@@ -2,12 +2,18 @@
 
 exports = module.exports = function (app, mongoose) {
   var devSchema = new mongoose.Schema({
-    _id: { type: mongoose.Schema.Types.ObjectId, unique: true },
-    title: String,
+    Title: String,
+    Course: String,
     CRN: String,
     code: String,
     Instructors: String,
     stream: String,
+    meetingTime: String,
+    Room: Number,
+    Size: Number,
+    Capacity: Number,
+    Enrollment: Number,
+    Waitlist: Number
     // added_by : {type: mongoose.Schema.Types.ObjectId, ref: 'Admin'}
   });
 
