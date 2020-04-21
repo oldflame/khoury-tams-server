@@ -23,6 +23,7 @@ exports = module.exports = function (app, mongoose) {
       required: true,
     },
     phoneNumber: {
+
       type: Number,
       required: true,
     },

@@ -2,8 +2,10 @@ var course = require("./services/course");
 var userService = require("./services/userService");
 var applicationService = require("./services/applicationService")
 var taService = require("./services/fill-hours");
+var reviewService = require("./services/reviewService");
 
 exports = module.exports = (app) => {
+
   app.options("/*", (req, res) => {
     return res.status(200).json();
   });
@@ -24,6 +26,9 @@ exports = module.exports = (app) => {
   app.get("/applications", applicationService.getAllApplications);
   app.post("/submitApplication", applicationService.submitApplication);
   app.get("/getSubmittedApplication/:studentId",applicationService.getApplicationOfStudent)
+  app.put("/profile/:profileId", userService.updateUserById);
+  app.get("/users/:userId", userService.getUserById);
+  app.get("/reviews", reviewService.getAllReviews);
   app.put("/followUser",userService.followUser)
   app.put("/unFollowUser",userService.followUser)
 };
