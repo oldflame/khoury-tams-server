@@ -58,7 +58,6 @@ var application = {
         return res.status(200).json(application);
       }
     );
-  }
   },
   getApplicationOfStudent: (req, res) => {
     req.app.db.models.Application.find(
