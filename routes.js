@@ -26,11 +26,8 @@ exports = module.exports = (app) => {
   app.get("/users", userService.getAllUsers);
   app.get("/applications", applicationService.getAllApplications);
   app.post("/submitApplication", applicationService.submitApplication);
+  app.get("/getSubmittedApplication/:studentId",applicationService.getApplicationOfStudent);
   app.put("/updateApplication",applicationService.updateApplication)
-  app.get(
-    "/getSubmittedApplication/:studentId",
-    applicationService.getApplicationOfStudent
-  );
   app.put("/profile/:profileId", userService.updateUserById);
   app.get("/users/:userId", userService.getUserById);
   app.get("/reviews", reviewService.getAllReviews);
