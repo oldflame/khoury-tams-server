@@ -24,7 +24,6 @@ var verifyToken = (token) => {
         }
         return res.status(401).json();
       });
-    });
 };
 
 var userService = {
@@ -96,7 +95,7 @@ var userService = {
             console.log("Users", user);
             return res.send(user);
         });
-    }
+    },
   register: (req, res) => {
     var workflow = req.app.utility.workflow(req, res);
     workflow.on("createUserObject", function () {
