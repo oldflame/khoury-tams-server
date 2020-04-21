@@ -94,7 +94,19 @@ var course = {
         return res.status(200).json(course);
       }
     );
-  },
+  }
+
+  // getCoursesForProfessor: (req, res) => {
+  //   const professor = req.params.professor;
+  //   req.app.db.models.Course.find({ Instructors: professor }, (err, courses) => {
+  //     if (err) {
+  //       console.log("Error", err);
+  //       return res.json([]);
+  //     }
+  //     console.log("Courses", courses);
+  //     return res.status(200).json(courses);
+  //   })
+  // }
 };
 
 module.exports = course;
