@@ -94,7 +94,7 @@ var userService = {
             }
             console.log("Users", user);
             return res.send(user);
-        });
+        }).populate('following').populate('followers');
     },
   register: (req, res) => {
     var workflow = req.app.utility.workflow(req, res);

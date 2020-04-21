@@ -33,12 +33,12 @@ exports = module.exports = function (app, mongoose) {
     },
     followers: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId, ref:"User"
       },
     ],
     following: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId, ref:"User"
       },
     ],
   });
