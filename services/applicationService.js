@@ -28,7 +28,37 @@ var application = {
             console.log("Applications", applicationsOfStudent);
             return res.status(200).json(applicationsOfStudent);
         });
-    }
+    },
+
+    // updateApplication: (req, res) => {
+    //     req.app.db.models.Application.update(
+    //       { _id: req.body.application._id },
+    //       req.body.application,
+    //       (err, application) => {
+    //         console.log("Working for application:", application);
+    //         if (err) {
+    //           console.log(err);
+    //           return res.status(400);
+    //         }
+    //         return res.status(200).json(application);
+    //       }
+    //     );
+    //   }
+
+    updateApplication: (req, res) => {
+    req.app.db.models.Application.updateOne(
+      { _id: req.body.application._id },
+      { $set: req.body.application },
+      (err, application) => {
+        if (err) {
+          console.log(err);
+          return res.status(400);
+        }
+        console.log("Submitted app: ", application);
+        return res.status(200).json(application);
+      }
+    );
+  }
 };
 
 module.exports = application;
