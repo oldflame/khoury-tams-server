@@ -3,6 +3,8 @@ var userService = require("./services/userService");
 var applicationService = require("./services/applicationService");
 var taService = require("./services/fill-hours");
 var reviewService = require("./services/reviewService");
+var feedService = require("./services/feedService");
+
 
 exports = module.exports = (app) => {
   app.options("/*", (req, res) => {
@@ -36,4 +38,6 @@ exports = module.exports = (app) => {
   app.post("/course/:courseId/reviews", reviewService.submitReviewForCourse);
   app.put("/followUser", userService.followUser);
   app.put("/unFollowUser", userService.followUser);
+  app.post("/feed",feedService.postFeed)
+  app.get("/feed/:userId", feedService.getFeedForUser);
 };
