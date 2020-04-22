@@ -46,6 +46,10 @@ exports = module.exports = function (app, mongoose) {
       type: String,
       required: true,
     },
+    status: {
+      type:String,
+      required: true,
+    }
   });
   ApplicationSchema.index({ _id: 1 }, { unique: true });
   app.db.model("Application", ApplicationSchema);
