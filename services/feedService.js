@@ -64,7 +64,6 @@ var feed = {
       }
     );
   },
-  }
 };
 
 module.exports = feed;
