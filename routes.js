@@ -37,4 +37,5 @@ exports = module.exports = (app) => {
   app.post("/feed",feedService.postFeed)
   app.get("/feed/:userId", feedService.getFeedForUser);
   app.delete("/deleteApplication/:applicationId",applicationService.deleteApplication)
+  app.delete("/deletePost/:postId",feedService.deletePost)
 };

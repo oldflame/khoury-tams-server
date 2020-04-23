@@ -50,6 +50,21 @@ var feed = {
       return res.status(200).json(feed);
     });
   },
+
+  deletePost: (req,res) => {
+    req.app.db.models.Feed.deleteOne(
+      { _id: req.params.postId },
+      (err, post) => {
+        if (err) {
+          console.log("Error", err);
+          return res.json([]);
+        }
+        console.log("Applications", post);
+        return res.status(200).json(post);
+      }
+    );
+  },
+  }
 };
 
 module.exports = feed;
