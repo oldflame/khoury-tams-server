@@ -127,6 +127,20 @@ var userService = {
     workflow.emit("createUserObject");
   },
 
+  deleteUser: (req,res) => {
+    req.app.db.models.Feed.deleteOne(
+      { _id: req.params.userId },
+      (err, deletedUser) => {
+        if (err) {
+          console.log("Error", err);
+          return res.json([]);
+        }
+        console.log("Applications", deletedUser);
+        return res.status(200).json(deletedUser);
+      }
+    );
+  },
+
   followUser: (req, res) => {
     var workflow = req.app.utility.workflow(req, res);
     workflow.on("updateCurrentUser", () => {
