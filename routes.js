@@ -18,7 +18,6 @@ exports = module.exports = (app) => {
   app.get("/courseNames", course.getAllCourseNames);
   app.put("/updateCourse", course.updateCourse);
   app.get("/course/:id", course.getCourseById);
-  app.get("/courses/details/:crn", course.getMoreCourseDetails);
   app.post("/login", userService.login);
   app.post("/register", userService.register);
   app.post("/submitHours", taService.submitTaHours);
@@ -26,11 +25,8 @@ exports = module.exports = (app) => {
   app.get("/users", userService.getAllUsers);
   app.get("/applications", applicationService.getAllApplications);
   app.post("/submitApplication", applicationService.submitApplication);
+  app.get("/getSubmittedApplication/:studentId",applicationService.getApplicationOfStudent);
   app.put("/updateApplication",applicationService.updateApplication)
-  app.get(
-    "/getSubmittedApplication/:studentId",
-    applicationService.getApplicationOfStudent
-  );
   app.put("/profile/:profileId", userService.updateUserById);
   app.get("/users/:userId", userService.getUserById);
   app.get("/reviews", reviewService.getAllReviews);
@@ -40,4 +36,5 @@ exports = module.exports = (app) => {
   app.put("/unFollowUser", userService.followUser);
   app.post("/feed",feedService.postFeed)
   app.get("/feed/:userId", feedService.getFeedForUser);
+  app.delete("/deleteApplication/:applicationId",applicationService.deleteApplication)
 };

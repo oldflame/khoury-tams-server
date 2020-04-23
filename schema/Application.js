@@ -47,8 +47,8 @@ exports = module.exports = function (app, mongoose) {
       required: true,
     },
     status: {
-      type:String,
-      required: true,
+      type: String,
+      required: true
     }
   });
   ApplicationSchema.index({ _id: 1 }, { unique: true });
