@@ -128,7 +128,7 @@ var userService = {
   },
 
   deleteUser: (req,res) => {
-    req.app.db.models.Feed.deleteOne(
+    req.app.db.models.User.deleteOne(
       { _id: req.params.userId },
       (err, deletedUser) => {
         if (err) {
